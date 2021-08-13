@@ -1,40 +1,49 @@
-import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom";
-import { withAuth0 } from '@auth0/auth0-react';
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
-import '../style/Header.css';
+// import Navbar from 'react-bootstrap/Navbar';
+// import { Link } from "react-router-dom";
+// import { withAuth0 } from '@auth0/auth0-react';
+// import LoginButton from './LoginButton';
+// import LogoutButton from './LogoutButton';
+// import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
+import Card from 'react-bootstrap/Card';
 
+import React, { Component } from 'react'
+import axios from 'axios';
+require('dotenv').config();
 
-const mystyle = {
-    // color: "white",
-    // backgroundColor: "DodgerBlue",
-    paddingLeft: "43rem",
-    paddingRight: "20px",
-    fontFamily: "Arial",
+export class Main extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            booksData: [],
+            showError: false,
+        }
+    }
 
-};
-const imgstyle = {
+    submittingForm = async (e) => {
+        e.preventDefault();
+        try {
+            const bookTitle = e.target.bookName.value;
+            const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
+            this.setState({
+                booksData: bookResponse.data,
+            });
+        }
 
-    paddingRight: "20px"
-};
-class Header extends Component {
+        catch (error) {
+
+            this.setState({
+                showError: true,
+            });
+            alert('NO AVAILABLE DATA');
+        }
+
+    }
     render() {
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <img src='///' alt="logo" ></img>
-                    <Navbar.Brand> Between Covers</Navbar.Brand>
-                    <Link to="/" style={mystyle}>BOOK SHELF</Link>
-                    <Link to="/profile" style={imgstyle}>Profile</Link>
-                    <Link to="/aboutus" style={imgstyle}>About Us </Link>
-                    {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
-                </Navbar>
-                <br></br>
-                {/* <Carousel>
+                <Carousel>
                     <Carousel.Item>
                         <img class="img"
                             className="d-block w-100"
@@ -43,7 +52,7 @@ class Header extends Component {
                         />
                         <Carousel.Caption>
                             <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -82,19 +91,43 @@ class Header extends Component {
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                </Carousel> */}
-
-                {/* <form style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
+                </Carousel>
+                <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
                     <label>BOOK NAME</label>
-                    <input style={{ marginTop: "10px", color: "white" }} name="location" type="text" />
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
+                    {/* <br></br>
+          <br></br> */}
                     <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
-                </form> */}
-                <br></br>
-                <br></br>
-            </div >
+                </form>
+
+                {
+
+                    this.state.booksData.map(item => {
+                        return (
+                            <Card style={{ width: '18rem', height: '500px' }}>
+                                <Card.Body>
+                                    <Card.Img variant="top" src={item.image} alt='book img' />
+                                    <br />
+                                    <Card.Title>{item.title}</Card.Title>
+                                    <Card.Text>
+                                        {item.description}
+                                    </Card.Text>
+
+                                </Card.Body>
+                            </Card>
+
+                        )
+                    })
+
+                }
+
+
+
+            </div>
         )
     }
 }
 
-export default withAuth0(Header);
+export default Main
+
