@@ -4,6 +4,7 @@ import Header from './component/Header';
 import Footer from './component/Footer';
 import Profile from './component/Profile';
 import Login from './component/Login';
+import Main from './component/Main'
 
 
 
@@ -20,6 +21,7 @@ export class App extends Component {
       <div>
         <Router>
           <Header />
+          <Main />
           <Switch>
             <Route exact path="/">
               {this.props.auth0.isAuthenticated && <Login />}
