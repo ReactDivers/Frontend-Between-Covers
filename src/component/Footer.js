@@ -24,8 +24,8 @@ const imgstyle = {
         return (
             <div>
                  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <img src='///' alt="logo" ></img>
-                    <Navbar.Brand> Between Covers</Navbar.Brand>
+                    {/* <img src='///' alt="logo" ></img> */}
+                    {/* <Navbar.Brand> Between Covers</Navbar.Brand> */}
                     <Link to="/" style={mystyle}>BOOK SHELF</Link>
                     <Link to="/profile" style={imgstyle}>Profile</Link>
                     <Link to="/aboutus" style={imgstyle}>About Us </Link>

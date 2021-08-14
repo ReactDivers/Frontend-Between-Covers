@@ -29,7 +29,7 @@ class Header extends Component {
                     <img src='///' alt="logo" ></img>
                     <Navbar.Brand> Between Covers</Navbar.Brand>
                     <Link to="/" style={mystyle}>BOOK SHELF</Link>
-                    <Link to="/profile" style={imgstyle}>Profile</Link>
+                    {this.props.auth0.isAuthenticated&& <Link to="/profile" style={imgstyle}>Profile</Link>}
                     <Link to="/aboutus" style={imgstyle}>About Us </Link>
                     {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
                 </Navbar>
