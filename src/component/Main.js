@@ -7,9 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
+import SelectedCard from './SelectedCard';
 
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Col, Container, Row } from 'react-bootstrap';
 require('dotenv').config();
 
 export class Main extends Component {
@@ -19,6 +21,7 @@ export class Main extends Component {
             booksData: [],
             showError: false,
         }
+        this.addingData();
     }
 
     submittingForm = async (e) => {
@@ -40,16 +43,28 @@ export class Main extends Component {
         }
 
     }
+
+    addingData = (e) => {
+        const selectedImage = this.state.booksData.image;
+        const selectedAuthor = this.state.booksData.author;
+        <SelectedCard
+            addingData={this.addingData}
+        />
+
+    }
     render() {
         return (
             <div>
-                <Carousel>
+                <Carousel style={{ width: '80rem' }}>
                     <Carousel.Item>
                         <img class="img"
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
+                        {/* <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
+                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
+                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/> */}
                         <Carousel.Caption>
                             <h3>First slide label</h3>
                             <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
@@ -100,27 +115,33 @@ export class Main extends Component {
           <br></br> */}
                     <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
                 </form>
+                <Container>
+                    <Row>
+                        {this.state.booksData.map((item) => (
+                            <Col lg={4} xs="auto">
+                                <Card style={{ width: '18rem', height: '500px', marginBlock: '2rem' }}>
+                                    <Card.Body>
+                                        <Card.Img variant="top" src={item.image} alt='book img' />
+                                        <br />
+                                        <Card.Title>{item.title}</Card.Title>
+                                        <Card.Text>
+                                            {item.author}
+                                        </Card.Text>
 
-                {
+                                    </Card.Body>
+                                    {
+                                        <button onClick={(e) => this.addingData(e)}>Add</button> 
 
-                    this.state.booksData.map(item => {
-                        return (
-                            <Card style={{ width: '18rem', height: '500px' }}>
-                                <Card.Body>
-                                    <Card.Img variant="top" src={item.image} alt='book img' />
-                                    <br />
-                                    <Card.Title>{item.title}</Card.Title>
-                                    <Card.Text>
-                                        {item.description}
-                                    </Card.Text>
+                                    }
+                                </Card>
+                            </Col>
+                        ))
+                        }
+                    </Row>
 
-                                </Card.Body>
-                            </Card>
+                </Container>
 
-                        )
-                    })
 
-                }
 
 
 
@@ -129,5 +150,5 @@ export class Main extends Component {
     }
 }
 
-export default Main
+export default Main;
 

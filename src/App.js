@@ -21,9 +21,10 @@ export class App extends Component {
       <div>
         <Router>
           <Header />
-          <Main />
+          {/* <Main /> */}
           <Switch>
             <Route exact path="/">
+              <Main />
               {this.props.auth0.isAuthenticated && <Login />}
             </Route>
             <Route exact path="/profile">
