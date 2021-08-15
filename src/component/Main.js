@@ -113,7 +113,7 @@ export class Main extends Component {
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
+                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; " />
                 </form>
                 <Container>
                     <Row>
@@ -130,7 +130,7 @@ export class Main extends Component {
 
                                     </Card.Body>
                                     {
-                                        <button onClick={(e) => this.addingData(e)}>Add to Bookshelf</button> 
+                                        <button onClick={(e) => this.addingData(e)}>Add to Books</button> 
 
                                     }
                                 </Card>
