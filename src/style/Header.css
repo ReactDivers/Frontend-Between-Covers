@@ -1,0 +1,17 @@
+a{
+    color:wheat;
+    
+  }
+  
+  a:hover{
+    color:darkgrey;
+  }
+
+  link{
+    text-align: center;
+  }
+
+  .img{
+    width: 150px;
+    height: 150px;
+  }
