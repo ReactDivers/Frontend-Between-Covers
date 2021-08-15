@@ -130,7 +130,7 @@ export class Main extends Component {
 
                                     </Card.Body>
                                     {
-                                        <button onClick={(e) => this.addingData(e)}>Add</button> 
+                                        <button onClick={(e) => this.addingData(e)}>Add to Bookshelf</button> 
 
                                     }
                                 </Card>

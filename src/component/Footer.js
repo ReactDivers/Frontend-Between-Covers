@@ -26,9 +26,9 @@ const imgstyle = {
                  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     {/* <img src='///' alt="logo" ></img> */}
                     {/* <Navbar.Brand> Between Covers</Navbar.Brand> */}
-                    <Link to="/" style={mystyle}>BOOK SHELF</Link>
+                    {/* <Link to="/" style={mystyle}>BOOK SHELF</Link>
                     <Link to="/profile" style={imgstyle}>Profile</Link>
-                    <Link to="/aboutus" style={imgstyle}>About Us </Link>
+                    <Link to="/aboutus" style={imgstyle}>About Us </Link> */}
                     {/* {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
                 </Navbar>
             </div>
