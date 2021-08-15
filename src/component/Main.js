@@ -8,11 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import BookCard from './BookCard';
 
-
-
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import ImageScroller from 'react-image-scroller';
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap';
+import  Container from 'react-bootstrap/Container';
 require('dotenv').config();
 
 export class Main extends Component {
@@ -21,8 +22,93 @@ export class Main extends Component {
         this.state = {
             booksData: [],
             showError: false,
+            /////////////////////
+            fiction: [],
+            nonFiction: [],
+            kids: [],
+            classic: [],
+            quote :[],
+
+
         }
         // this.addingData();
+    }
+
+
+    componentDidMount = () => {
+
+        const server = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server}`)
+
+
+        axios.get(`${server}/book1`)
+            .then((result) => {
+                this.setState({
+                    fiction: result.data
+                })
+            })
+
+        console.log(this.state.fiction);
+        /////////////////////NONFICTION/////////////////////////////////////
+        const server2 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server2}`)
+
+
+        axios.get(`${server2}/book2`)
+            .then((result) => {
+                this.setState({
+                    nonFiction: result.data
+                })
+            })
+
+        console.log(this.state.nonFiction);
+        /////////////////////KIDS////////////////////////////
+        const server3 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server3}`)
+
+
+        axios.get(`${server3}/book3`)
+            .then((result) => {
+                this.setState({
+                    kids: result.data
+                })
+            })
+
+        console.log(this.state.kids);
+
+        //////////////////////CLASSIC///////////////////////
+        const server4 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server4}`)
+
+
+        axios.get(`${server4}/book4`)
+            .then((result) => {
+                this.setState({
+                    classic: result.data
+                })
+            })
+
+        console.log(this.state.classic);
+
+////////////////////////QUOTE////////////////////////////////
+        const server5 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server5}`)
+
+
+        axios.get(`${server5}/quote`)
+            .then((result) => {
+                this.setState({
+                    quote: result.data
+                })
+            })
+
+        console.log(this.state.quote);
+
     }
 
     submittingForm = async (e) => {
@@ -65,8 +151,10 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel style={{ width: '80rem' }}>
+                <Carousel>
+               
                     <Carousel.Item>
+                        
                         <img class="img"
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
@@ -114,6 +202,8 @@ export class Main extends Component {
                         <Carousel.Caption>
                             <h3>Third slide label</h3>
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+
+                            
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
@@ -142,8 +232,64 @@ export class Main extends Component {
                 </Container>
 
 
+                {/* } */}
+                <div>
+                    <h> FICTION 🐉 </h>
+                    <ImageScroller style={{margin:'2rem'}}>
+
+                        {this.state.fiction.map(item =>
+
+                            <img style={{marginRight:'2rem'}} src={item.image} />
 
 
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+                    <h> NON FICTION 🔖 </h>
+                    <ImageScroller style={{margin:'2rem'}}>
+
+                        {this.state.nonFiction.map(item =>
+
+                            <img  style={{marginRight:'2rem'}} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+                    <h> CLASSIC 🖋️ </h>
+                    <ImageScroller style={{margin:'2rem'}}>
+
+                        {this.state.classic.map(item =>
+
+                            <img  style={{marginRight:'2rem'}} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+
+
+                    <h> KIDS 🧒👧 </h>
+                    <ImageScroller style={{margin:'2rem'}}>
+
+                        {this.state.kids.map(item =>
+
+                            <img  style={{marginRight:'2rem'}} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
 
             </div>
         )
