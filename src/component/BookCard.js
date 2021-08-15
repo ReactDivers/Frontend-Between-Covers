@@ -6,20 +6,18 @@ import  {Container,Row,Col}  from 'react-bootstrap';
 export class BookCard extends Component {
     
     render() {
-        console.log(this.props);
         return (
             <div>
                  <Container>
                  <Row>
                             <Col lg={4} xs="auto">
-                                <BookCard />
                                 <Card style={{ width: '18rem', height: '500px', marginBlock: '2rem' }}>
                                     <Card.Body>
-                                        <Card.Img variant="top" src={this.props.image} alt='book img' />
+                                        <Card.Img variant="top" src={this.props.bookInfo.image} alt='book img' />
                                         <br />
-                                        <Card.Title>{this.props.title}</Card.Title>
+                                        <Card.Title>{this.props.bookInfo.title}</Card.Title>
                                         <Card.Text>
-                                            {this.props.author}
+                                            {this.props.bookInfo.author}
                                         </Card.Text>
 
                                     </Card.Body>
