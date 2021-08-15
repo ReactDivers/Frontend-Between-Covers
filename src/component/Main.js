@@ -6,8 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import LogoutButton from './LogoutButton';
 // import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
-import SelectedCard from './SelectedCard';
+import BookCard from './BookCard';
+
+
 
 import React, { Component } from 'react'
 import axios from 'axios';
@@ -21,21 +22,30 @@ export class Main extends Component {
             booksData: [],
             showError: false,
         }
-        this.addingData();
+        // this.addingData();
     }
 
     submittingForm = async (e) => {
         e.preventDefault();
         try {
+
+
             const bookTitle = e.target.bookName.value;
+// console.log(bookTitle);
             const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
-            this.setState({
-                booksData: bookResponse.data,
-            });
-        }
+// console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
+        //   console.log(bookResponse.data);
+                this.setState({
+                
+                    booksData: bookResponse.data
+                });
+            }
+           
+        
 
         catch (error) {
 
+           
             this.setState({
                 showError: true,
             });
@@ -44,14 +54,14 @@ export class Main extends Component {
 
     }
 
-    addingData = (e) => {
-        const selectedImage = this.state.booksData.image;
-        const selectedAuthor = this.state.booksData.author;
-        <SelectedCard
-            addingData={this.addingData}
-        />
+    // addingData = (e) => {
+    //     const selectedImage = this.state.booksData.image;
+    //     const selectedAuthor = this.state.booksData.author;
+    //     <SelectedCard
+    //         addingData={this.addingData}
+    //     />
 
-    }
+    // }
     render() {
         return (
             <div>
@@ -117,25 +127,15 @@ export class Main extends Component {
                 </form>
                 <Container>
                     <Row>
-                        {this.state.booksData.map((item) => (
+                        {this.state.booksData.map((elem) => {
                             <Col lg={4} xs="auto">
-                                <Card style={{ width: '18rem', height: '500px', marginBlock: '2rem' }}>
-                                    <Card.Body>
-                                        <Card.Img variant="top" src={item.image} alt='book img' />
-                                        <br />
-                                        <Card.Title>{item.title}</Card.Title>
-                                        <Card.Text>
-                                            {item.author}
-                                        </Card.Text>
+                                <BookCard 
 
-                                    </Card.Body>
-                                    {
-                                        <button onClick={(e) => this.addingData(e)}>Add to Books</button> 
-
-                                    }
-                                </Card>
+                                  data={elem} 
+                                />
+    
                             </Col>
-                        ))
+                        })
                         }
                     </Row>
 
