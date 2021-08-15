@@ -123,7 +123,7 @@ export class Main extends Component {
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
+                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  SEARCH&#128270;  " />
                 </form>
                 <Container>
                     <Row>
