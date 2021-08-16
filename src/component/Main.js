@@ -40,7 +40,7 @@ export class Main extends Component {
 
         const server = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server}`)
+        // console.log(` server component did mount : ${server}`)
 
 
         axios.get(`${server}/book1`)
@@ -50,11 +50,11 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.fiction);
+        // console.log(this.state.fiction);
         /////////////////////NONFICTION/////////////////////////////////////
         const server2 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server2}`)
+        // console.log(` server component did mount : ${server2}`)
 
 
         axios.get(`${server2}/book2`)
@@ -64,11 +64,11 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.nonFiction);
+        // console.log(this.state.nonFiction);
         /////////////////////KIDS////////////////////////////
         const server3 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server3}`)
+        // console.log(` server component did mount : ${server3}`)
 
 
         axios.get(`${server3}/book3`)
@@ -78,12 +78,12 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.kids);
+        // console.log(this.state.kids);
 
         //////////////////////CLASSIC///////////////////////
         const server4 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server4}`)
+        // console.log(` server component did mount : ${server4}`)
 
 
         axios.get(`${server4}/book4`)
@@ -93,12 +93,12 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.classic);
+        // console.log(this.state.classic);
 
         ////////////////////////QUOTE////////////////////////////////
         const server5 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server5}`)
+        // console.log(` server component did mount : ${server5}`)
 
 
         axios.get(`${server5}/quote`)
@@ -108,7 +108,7 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.quote);
+        // console.log(this.state.quote);
 
     }
 
