@@ -6,18 +6,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import LogoutButton from './LogoutButton';
 // import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
+import BookCard from './BookCard';
+import SelectedBook from './SelectedBook';
+
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ImageScroller from 'react-image-scroller';
 import React, { Component } from 'react'
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
 require('dotenv').config();
 
 export class Main extends Component {
     constructor(props) {
         super(props);
+
+
         this.state = {
+            show: false,
+            title: "",
+            description: '',
+            image: '',
+            author:'',
             booksData: [],
             showError: false,
             /////////////////////
@@ -25,12 +35,38 @@ export class Main extends Component {
             nonFiction: [],
             kids: [],
             classic: [],
-            quote :[],
+            quote: []
+        };
 
-
-        }
     }
 
+    showModel = () => {
+        this.setState({
+            show: true,
+        });
+        console.log("click");
+    }
+
+    closeModel = () => {
+        this.setState({
+            show: false,
+        });
+    }
+
+
+    // this.addingData();
+
+    bookMOdel = (title, description, image,author) => {
+        this.setState({
+            title: title,
+            description: description,
+            image: image,
+            author:author,
+            show: true,
+
+        })
+
+    }
 
     componentDidMount = () => {
 
@@ -91,7 +127,7 @@ export class Main extends Component {
 
         console.log(this.state.classic);
 
-////////////////////////QUOTE////////////////////////////////
+        ////////////////////////QUOTE////////////////////////////////
         const server5 = 'http://localhost:3001'
 
         console.log(` server component did mount : ${server5}`)
@@ -111,14 +147,23 @@ export class Main extends Component {
     submittingForm = async (e) => {
         e.preventDefault();
         try {
+
+
             const bookTitle = e.target.bookName.value;
+            // console.log(bookTitle);
             const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
+            // console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
+            console.log(bookResponse.data);
             this.setState({
-                booksData: bookResponse.data,
+
+                booksData: bookResponse.data
             });
         }
 
+
+
         catch (error) {
+
 
             this.setState({
                 showError: true,
@@ -127,18 +172,30 @@ export class Main extends Component {
         }
 
     }
+
+    // addingData = (e) => {
+    //     const selectedImage = this.state.booksData.image;
+    //     const selectedAuthor = this.state.booksData.author;
+    //     <SelectedCard
+    //         addingData={this.addingData}
+    //     />
+
+    // }
     render() {
         return (
             <div>
                 <Carousel>
-               
+
                     <Carousel.Item>
-                        
+
                         <img class="img"
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
+                        {/* <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
+                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
+                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/> */}
                         <Carousel.Caption>
                             <h3>First slide label</h3>
                             <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
@@ -179,46 +236,48 @@ export class Main extends Component {
                             <h3>Third slide label</h3>
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
 
-                            
+
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
                 <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
-                    <label>BOOK NAME</label>
+                    <label>BOOK NAME </label>
+
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
+                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; " />
                 </form>
+                <Container>
+                    <Row xs={1}>
+                        {this.state.booksData.map((elem) => {
+                            return (
+                                <Col lg={4} xs="auto">
+                                    <BookCard
+                                        
+                                        model={this.bookMOdel}
+                                        bookInfo={elem}
 
-                {
+                                    />
 
-                    this.state.booksData.map(item => {
-                        return (
-                            <Card style={{ width: '18rem', height: '500px' }}>
-                                <Card.Body>
-                                    <Card.Img variant="top" src={item.image} alt='book img' />
-                                    <br />
-                                    <Card.Title>{item.title}</Card.Title>
-                                    <Card.Text>
-                                        {item.description}
-                                    </Card.Text>
+                                </Col>
+                            )
+                        })
+                        }
+                    </Row>
 
-                                </Card.Body>
-                            </Card>
+                </Container>
 
-                        )
-                    })
 
-                }
+                {/* } */}
                 <div>
                     <h> FICTION 🐉 </h>
-                    <ImageScroller style={{margin:'2rem'}}>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.fiction.map(item =>
 
-                            <img style={{marginRight:'2rem'}} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
 
 
                         )}
@@ -228,11 +287,11 @@ export class Main extends Component {
 
                 <div>
                     <h> NON FICTION 🔖 </h>
-                    <ImageScroller style={{margin:'2rem'}}>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.nonFiction.map(item =>
 
-                            <img  style={{marginRight:'2rem'}} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
 
 
                         )}
@@ -242,11 +301,11 @@ export class Main extends Component {
 
                 <div>
                     <h> CLASSIC 🖋️ </h>
-                    <ImageScroller style={{margin:'2rem'}}>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
 
-                            <img  style={{marginRight:'2rem'}} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
 
 
                         )}
@@ -258,16 +317,25 @@ export class Main extends Component {
 
 
                     <h> KIDS 🧒👧 </h>
-                    <ImageScroller style={{margin:'2rem'}}>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.kids.map(item =>
 
-                            <img  style={{marginRight:'2rem'}} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
 
 
                         )}
                     </ImageScroller>
 
+                    <SelectedBook
+                        showState={this.state.show}
+                        close={this.closeModel}
+                        title={this.state.title}
+                        description={this.state.description}
+                        image={this.state.image}
+                        author={this.state.author}
+
+                    />
                 </div>
 
             </div>
@@ -275,5 +343,5 @@ export class Main extends Component {
     }
 }
 
-export default Main
+export default Main;
 

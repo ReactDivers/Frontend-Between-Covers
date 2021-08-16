@@ -23,6 +23,9 @@ const Profile = () => {
 
                     </Card.Body>
                 </Card>
+                <h2>
+                    Your BOOKSHELF
+                </h2>
             </div>
         )
     );
