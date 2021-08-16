@@ -1,0 +1,37 @@
+.Card {
+    margin: 3em;
+}
+
+.h2{
+    color: white
+}
+.Card .header {
+    padding: 0px;
+}
+
+.Card .header img {
+    display: block;
+    border : 2px solid black;
+}
+
+
+.Card .body {
+    background-color: rgb(211, 188, 175);
+}
+
+.Card .body h2{
+    background-color: rgb(128, 128, 185);
+    font-size: 20px;
+    padding: 10px;
+font-style: italic;
+}
+
+.Card .body p {
+    padding: 10px;
+background-color: rgb(211, 188, 175);
+font-style: italic;
+font-size: 20px;
+
+
+}
+
