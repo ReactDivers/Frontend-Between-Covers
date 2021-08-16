@@ -14,6 +14,7 @@ import ImageScroller from 'react-image-scroller';
 import React, { Component } from 'react'
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
+import '../style/Main.css';
 require('dotenv').config();
 
 export class Main extends Component {
@@ -151,18 +152,17 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel>
+                <Carousel >
 
                     <Carousel.Item>
 
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
-                        {/* <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/> */}
+                      
                         <Carousel.Caption>
                             <h3>First slide label</h3>
                             <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
@@ -170,6 +170,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="https://statsandr.com/blog/2020-04-26-a-package-to-download-free-springer-books-during-covid-19-quarantine_files/A%20package%20to%20download%20free%20Springer%20books%20during%20Covid-19%20quarantine.jpeg"
                             alt="Second slide"
@@ -182,6 +183,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                        height='460px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
@@ -194,6 +196,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="https://cdn.theatlantic.com/media/mt/food/assets_c/2011/05/kindle-charles-dickens-1-thumb-600x300-51010.jpg"
                             alt="Third slide"
@@ -209,11 +212,13 @@ export class Main extends Component {
                 </Carousel>
                 <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
-                    <label>BOOK NAME</label>
-                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
-                    {/* <br></br>
-          <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; " />
+                    <label class=
+                    'search' for="bookName">BOOK NAME</label>
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName"  type="text" />
+                    <input 
+                    id="button"
+                    // style={{ margin: "10px", color: "#0D0000" }}
+                     type="submit" value=" &#x1F50E;&#xFE0E; " />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -236,8 +241,10 @@ export class Main extends Component {
                 </Container>
 
 
+
                 {/* } */}
                 <div>
+                <br></br>
                     <h> FICTION 🐉 </h>
                     <ImageScroller style={{ margin: '2rem' }}>
 

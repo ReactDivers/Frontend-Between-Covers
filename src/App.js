@@ -27,7 +27,6 @@ import {
       <div>
         <Router>
           <Header />
-          {/* <Main /> */}
           <Switch>
             <Route exact path="/">
               <Main />
