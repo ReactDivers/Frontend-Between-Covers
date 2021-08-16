@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
 import BookCard from './BookCard';
+import SelectedBook from './SelectedBook';
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -19,7 +20,14 @@ require('dotenv').config();
 export class Main extends Component {
     constructor(props) {
         super(props);
+
+
         this.state = {
+            show: false,
+            title: "",
+            description: '',
+            image: '',
+            author:'',
             booksData: [],
             showError: false,
             /////////////////////
@@ -27,13 +35,38 @@ export class Main extends Component {
             nonFiction: [],
             kids: [],
             classic: [],
-            quote: [],
+            quote: []
+        };
 
-
-        }
-        // this.addingData();
     }
 
+    showModel = () => {
+        this.setState({
+            show: true,
+        });
+        console.log("click");
+    }
+
+    closeModel = () => {
+        this.setState({
+            show: false,
+        });
+    }
+
+
+    // this.addingData();
+
+    bookMOdel = (title, description, image,author) => {
+        this.setState({
+            title: title,
+            description: description,
+            image: image,
+            author:author,
+            show: true,
+
+        })
+
+    }
 
     componentDidMount = () => {
 
@@ -120,7 +153,7 @@ export class Main extends Component {
             // console.log(bookTitle);
             const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
             // console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
-            //   console.log(bookResponse.data);
+            console.log(bookResponse.data);
             this.setState({
 
                 booksData: bookResponse.data
@@ -209,7 +242,8 @@ export class Main extends Component {
                 </Carousel>
                 <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
-                    <label>BOOK NAME</label>
+                    <label>BOOK NAME </label>
+
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
                     {/* <br></br>
           <br></br> */}
@@ -221,8 +255,8 @@ export class Main extends Component {
                             return (
                                 <Col lg={4} xs="auto">
                                     <BookCard
-
-
+                                        
+                                        model={this.bookMOdel}
                                         bookInfo={elem}
 
                                     />
@@ -293,6 +327,15 @@ export class Main extends Component {
                         )}
                     </ImageScroller>
 
+                    <SelectedBook
+                        showState={this.state.show}
+                        close={this.closeModel}
+                        title={this.state.title}
+                        description={this.state.description}
+                        image={this.state.image}
+                        author={this.state.author}
+
+                    />
                 </div>
 
             </div>

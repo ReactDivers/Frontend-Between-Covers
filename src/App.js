@@ -4,7 +4,8 @@ import Header from './component/Header';
 import Footer from './component/Footer';
 import Profile from './component/Profile';
 import Login from './component/Login';
-import Main from './component/Main'
+import Main from './component/Main';
+import SelectedBook from './component/SelectedBook';
 
 
 
@@ -16,6 +17,9 @@ import {
 
 
 export class App extends Component {
+
+  
+
   render() {
     return (
       <div>
@@ -24,7 +28,9 @@ export class App extends Component {
           {/* <Main /> */}
           <Switch>
             <Route exact path="/">
-              <Main />
+              <Main
+                show={this.showModel}
+              />
               {this.props.auth0.isAuthenticated && <Login />}
             </Route>
             <Route exact path="/profile">
@@ -32,6 +38,7 @@ export class App extends Component {
             </Route>
           </Switch>
           <Footer />
+         
         </Router>
 
       </div>
