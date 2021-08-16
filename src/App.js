@@ -6,6 +6,10 @@ import Profile from './component/Profile';
 import Login from './component/Login';
 import Main from './component/Main';
 import SelectedBook from './component/SelectedBook';
+import Card from './component/CARD/Card';
+import { Container, Row, Col } from 'react-bootstrap';
+import AboutUs from './component/AboutUs';
+
 
 
 
@@ -18,7 +22,7 @@ import {
 
 export class App extends Component {
 
-  
+
 
   render() {
     return (
@@ -35,45 +39,20 @@ export class App extends Component {
             <Route exact path="/profile">
               {this.props.auth0.isAuthenticated && <Profile />}
             </Route>
+            <Route exact path="/aboutus">
+             <AboutUs />
+            </Route>
+           
           </Switch>
           <Footer />
-         
+
         </Router>
-
-<div className="App">
- <Card 
- title='Rawan Alazazi'
- imgUrl= 'https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBob3RvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
- body='LEADER & DEVELOPER'
- />
-
-<Card 
- title='Sarah Al-hilo'
- imgUrl= 'https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBob3RvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
- body='DEVELOPER'
- />
-
-<Card 
- title='Nada Al-abdullah'
- imgUrl= 'https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBob3RvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
- body='DEVELOPER'
- />
-
-
-<Card 
- title='Leen Duafi'
- imgUrl= 'https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBob3RvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
- body='DEVELOPER'
- />
-
- </div>
- 
-
-
-  </div>
-    )
+       
+             
+       </div>
+        )
   }
 }
 
-export default withAuth0(App);
+        export default withAuth0(App);
 

@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import '../style/Header.css';
-import Carousel from 'react-bootstrap/Carousel';
+// import '../style/Header.css';
 
 
 const mystyle = {
@@ -26,7 +25,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <img src='///' alt="logo" ></img>
+                    <img src='src/component/logo.png' alt="logo" ></img>
                     <Navbar.Brand> Between Covers</Navbar.Brand>
                     <Link to="/" style={mystyle}>Home</Link>
                     {this.props.auth0.isAuthenticated&& <Link to="/profile" style={imgstyle}>Profile</Link>}
