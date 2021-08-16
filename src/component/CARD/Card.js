@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
-import'./Card.css';
+import React, { Component } from "react";
+import "./Card.css";
 
+function Card({ title, imgUrl, body,width,height}) {
+  return (
+    <div className="Card-container" style={{width:250,height:400}}>
+      <div className="image-container">
+        <img src={imgUrl} alt="" />
+      </div>
 
-// style={{width:width,height:'calc(0.5*'+height+')'}}/> 
-
-function Card({src,alt,title,content,width='200px',height='200px'}) {
-    return (
-        <div className="Card" style={{width:width, height, height}}>
- <div className="header">
-<img src={src} alt={alt} style={{width:width,height:height}}/>           
+      <div className="content">
+        <div className="card-title">
+          <h2>{title}</h2>
         </div>
 
-        <div className="body" style={{width:width,height:height}}>
-            <h2>{title}</h2>
-            <p>{content}</p>
-    </div>
+        <div className="card-body">
+          <p>{body}</p>
+        </div>
 
+        <div className="btn">
+          <button>
+            <a> view more</a>
+          </button>
+        </div>
+      </div>
 
-    {/* <div className="header">
+      {/* <div className="header">
 <img src={Img2} alt={alt} style={{width:width,height:'calc(0.5*'+height+')'}}/>           
         </div>
         <div className="body" style={{width:width,height:height}}>
@@ -42,10 +49,9 @@ function Card({src,alt,title,content,width='200px',height='200px'}) {
             <h2>{title}</h2>
             <p>{content}</p>
     </div> */}
-
     </div>
-    )
+  );
 }
-// style={{width:width,height:'calc(0.5*'+height+')'}}/> 
+// style={{width:width,height:'calc(0.5*'+height+')'}}/>
 
 export default Card;
