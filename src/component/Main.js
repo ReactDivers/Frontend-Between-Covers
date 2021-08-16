@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../style/Header.css';
 import Carousel from 'react-bootstrap/Carousel';
 import BookCard from './BookCard';
+import SelectedBook from './SelectedBook';
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -20,7 +21,14 @@ require('dotenv').config();
 export class Main extends Component {
     constructor(props) {
         super(props);
+
+
         this.state = {
+            show: false,
+            title: "",
+            description: '',
+            image: '',
+            author:'',
             booksData: [],
             showError: false,
             /////////////////////
@@ -28,13 +36,38 @@ export class Main extends Component {
             nonFiction: [],
             kids: [],
             classic: [],
-            quote: [],
+            quote: []
+        };
 
-
-        }
-        // this.addingData();
     }
 
+    showModel = () => {
+        this.setState({
+            show: true,
+        });
+        console.log("click");
+    }
+
+    closeModel = () => {
+        this.setState({
+            show: false,
+        });
+    }
+
+
+    // this.addingData();
+
+    bookMOdel = (title, description, image,author) => {
+        this.setState({
+            title: title,
+            description: description,
+            image: image,
+            author:author,
+            show: true,
+
+        })
+
+    }
 
     componentDidMount = () => {
 
@@ -121,7 +154,7 @@ export class Main extends Component {
             // console.log(bookTitle);
             const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
             // console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
-            //   console.log(bookResponse.data);
+            console.log(bookResponse.data);
             this.setState({
 
                 booksData: bookResponse.data
@@ -152,27 +185,32 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel >
+                <Carousel style={{ width:'800px',marginLeft:'14rem'}} >
 
                     <Carousel.Item>
+                        <Carousel.Caption>
+                            {/* <h3>First slide label</h3> */}
+                            <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
+                        </Carousel.Caption>
 
                         <img class="img"
-                         height='460px'
+                         height='700px'
+                         width='200px'
+
+
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
                       
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
-                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                         height='460px'
+                         height='600px'
+                         width='400px'
+
                             className="d-block w-100"
-                            src="https://statsandr.com/blog/2020-04-26-a-package-to-download-free-springer-books-during-covid-19-quarantine_files/A%20package%20to%20download%20free%20Springer%20books%20during%20Covid-19%20quarantine.jpeg"
+                            src="https://img5.goodfon.com/wallpaper/nbig/c/35/books-glasses-table-library.jpg"
                             alt="Second slide"
                         />
 
@@ -183,9 +221,10 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                        height='460px'
+                             height='650px'
+                             width='400px'
                             className="d-block w-100"
-                            src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
+                            src="https://c1.wallpaperflare.com/preview/493/690/564/book-old-book-read-used.jpg"
                             alt="Third slide"
                         />
 
@@ -196,9 +235,10 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                         height='460px'
+                             height='650px'
+                             width='400px'
                             className="d-block w-100"
-                            src="https://cdn.theatlantic.com/media/mt/food/assets_c/2011/05/kindle-charles-dickens-1-thumb-600x300-51010.jpg"
+                            src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
                         />
 
@@ -210,15 +250,14 @@ export class Main extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-                <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
+                
+                <form onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
-                    <label class=
-                    'search' for="bookName">BOOK NAME</label>
-                    <input style={{ marginTop: "10px", color: "black" }} name="bookName"  type="text" />
-                    <input 
-                    id="button"
-                    // style={{ margin: "10px", color: "#0D0000" }}
-                     type="submit" value=" &#x1F50E;&#xFE0E; " />
+
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book"/>
+                    {/* <br></br>
+          <br></br> */}
+                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; "  />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -226,8 +265,8 @@ export class Main extends Component {
                             return (
                                 <Col lg={4} xs="auto">
                                     <BookCard
-
-
+                                        
+                                        model={this.bookMOdel}
                                         bookInfo={elem}
 
                                     />
@@ -300,6 +339,15 @@ export class Main extends Component {
                         )}
                     </ImageScroller>
 
+                    <SelectedBook
+                        showState={this.state.show}
+                        close={this.closeModel}
+                        title={this.state.title}
+                        description={this.state.description}
+                        image={this.state.image}
+                        author={this.state.author}
+
+                    />
                 </div>
 
             </div>

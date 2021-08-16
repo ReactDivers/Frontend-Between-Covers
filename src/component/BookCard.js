@@ -32,6 +32,11 @@ export class BookCard extends Component {
         })
     }
 
+    bookModel = () => {
+        this.props.model(this.props.bookInfo.title, this.props.bookInfo.description, this.props.bookInfo.image, this.props.bookInfo.author)
+    }
+
+
     render() {
         return (
             <div>
@@ -40,7 +45,7 @@ export class BookCard extends Component {
                         <Col lg={4} xs="auto">
                             <Card style={{ width: '18rem', height: '500px', marginBlock: '2rem' }}>
                                 <Card.Body>
-                                    <Card.Img variant="top" src={this.props.bookInfo.image} alt='book img' />
+                                    <Card.Img variant="top" src={this.props.bookInfo.image} alt='book img' onClick={this.bookModel} />
                                     <br />
                                     <Card.Title>{this.props.bookInfo.title}</Card.Title>
                                     <Card.Text>
