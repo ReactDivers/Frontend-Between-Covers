@@ -8,11 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import BookCard from './BookCard';
 
-
-
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import ImageScroller from 'react-image-scroller';
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import '../style/Main.css';
 require('dotenv').config();
 
 export class Main extends Component {
@@ -21,8 +23,93 @@ export class Main extends Component {
         this.state = {
             booksData: [],
             showError: false,
+            /////////////////////
+            fiction: [],
+            nonFiction: [],
+            kids: [],
+            classic: [],
+            quote: [],
+
+
         }
         // this.addingData();
+    }
+
+
+    componentDidMount = () => {
+
+        const server = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server}`)
+
+
+        axios.get(`${server}/book1`)
+            .then((result) => {
+                this.setState({
+                    fiction: result.data
+                })
+            })
+
+        console.log(this.state.fiction);
+        /////////////////////NONFICTION/////////////////////////////////////
+        const server2 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server2}`)
+
+
+        axios.get(`${server2}/book2`)
+            .then((result) => {
+                this.setState({
+                    nonFiction: result.data
+                })
+            })
+
+        console.log(this.state.nonFiction);
+        /////////////////////KIDS////////////////////////////
+        const server3 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server3}`)
+
+
+        axios.get(`${server3}/book3`)
+            .then((result) => {
+                this.setState({
+                    kids: result.data
+                })
+            })
+
+        console.log(this.state.kids);
+
+        //////////////////////CLASSIC///////////////////////
+        const server4 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server4}`)
+
+
+        axios.get(`${server4}/book4`)
+            .then((result) => {
+                this.setState({
+                    classic: result.data
+                })
+            })
+
+        console.log(this.state.classic);
+
+        ////////////////////////QUOTE////////////////////////////////
+        const server5 = 'http://localhost:3001'
+
+        console.log(` server component did mount : ${server5}`)
+
+
+        axios.get(`${server5}/quote`)
+            .then((result) => {
+                this.setState({
+                    quote: result.data
+                })
+            })
+
+        console.log(this.state.quote);
+
     }
 
     submittingForm = async (e) => {
@@ -31,21 +118,21 @@ export class Main extends Component {
 
 
             const bookTitle = e.target.bookName.value;
-// console.log(bookTitle);
+            // console.log(bookTitle);
             const bookResponse = await axios.get(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
-// console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
-        //   console.log(bookResponse.data);
-                this.setState({
-                
-                    booksData: bookResponse.data
-                });
-            }
-           
-        
+            // console.log(`${process.env.REACT_APP_SERVER}/book?q=${bookTitle}`);
+            //   console.log(bookResponse.data);
+            this.setState({
+
+                booksData: bookResponse.data
+            });
+        }
+
+
 
         catch (error) {
 
-           
+
             this.setState({
                 showError: true,
             });
@@ -65,16 +152,17 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel style={{ width: '80rem' }}>
+                <Carousel >
+
                     <Carousel.Item>
+
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
-                        {/* <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/> */}
+                      
                         <Carousel.Caption>
                             <h3>First slide label</h3>
                             <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
@@ -82,6 +170,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="https://statsandr.com/blog/2020-04-26-a-package-to-download-free-springer-books-during-covid-19-quarantine_files/A%20package%20to%20download%20free%20Springer%20books%20during%20Covid-19%20quarantine.jpeg"
                             alt="Second slide"
@@ -94,6 +183,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                        height='460px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
@@ -106,6 +196,7 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                         height='460px'
                             className="d-block w-100"
                             src="https://cdn.theatlantic.com/media/mt/food/assets_c/2011/05/kindle-charles-dickens-1-thumb-600x300-51010.jpg"
                             alt="Third slide"
@@ -114,27 +205,35 @@ export class Main extends Component {
                         <Carousel.Caption>
                             <h3>Third slide label</h3>
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+
+
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
                 <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
                     <br></br>
-                    <label>BOOK NAME</label>
-                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
-                    {/* <br></br>
-          <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  SEARCH&#128270;  " />
+                    <label class=
+                    'search' for="bookName">BOOK NAME</label>
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName"  type="text" />
+                    <input 
+                    id="button"
+                    // style={{ margin: "10px", color: "#0D0000" }}
+                     type="submit" value=" &#x1F50E;&#xFE0E; " />
                 </form>
                 <Container>
-                    <Row>
+                    <Row xs={1}>
                         {this.state.booksData.map((elem) => {
-                            <Col lg={4} xs="auto">
-                                <BookCard 
+                            return (
+                                <Col lg={4} xs="auto">
+                                    <BookCard
 
-                                  data={elem} 
-                                />
-    
-                            </Col>
+
+                                        bookInfo={elem}
+
+                                    />
+
+                                </Col>
+                            )
                         })
                         }
                     </Row>
@@ -143,7 +242,65 @@ export class Main extends Component {
 
 
 
+                {/* } */}
+                <div>
+                <br></br>
+                    <h> FICTION 🐉 </h>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
+                        {this.state.fiction.map(item =>
+
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+                    <h> NON FICTION 🔖 </h>
+                    <ImageScroller style={{ margin: '2rem' }}>
+
+                        {this.state.nonFiction.map(item =>
+
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+                    <h> CLASSIC 🖋️ </h>
+                    <ImageScroller style={{ margin: '2rem' }}>
+
+                        {this.state.classic.map(item =>
+
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
+
+                <div>
+
+
+                    <h> KIDS 🧒👧 </h>
+                    <ImageScroller style={{ margin: '2rem' }}>
+
+                        {this.state.kids.map(item =>
+
+                            <img style={{ marginRight: '2rem' }} src={item.image} />
+
+
+                        )}
+                    </ImageScroller>
+
+                </div>
 
             </div>
         )

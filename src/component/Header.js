@@ -33,7 +33,7 @@ class Header extends Component {
                     <Link to="/aboutus" style={imgstyle}>About Us </Link>
                     {this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}
                 </Navbar>
-                <br></br>
+               
                 {/* <Carousel>
                     <Carousel.Item>
                         <img class="img"
@@ -90,8 +90,6 @@ class Header extends Component {
                     <input style={{ marginTop: "10px", color: "white" }} name="location" type="text" />
                     <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" SEARCH " />
                 </form> */}
-                <br></br>
-                <br></br>
             </div >
         )
     }

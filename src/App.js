@@ -21,7 +21,6 @@ export class App extends Component {
       <div>
         <Router>
           <Header />
-          {/* <Main /> */}
           <Switch>
             <Route exact path="/">
               <Main />
