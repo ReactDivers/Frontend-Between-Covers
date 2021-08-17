@@ -4,32 +4,67 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
 // import {bookData} from './Main';
 import axios from "axios";
-
+const SERVER_URL=process.env.REACT_APP_SERVER;
 export class BookCard extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            toReadBooks:[],
+            email:this.props.auth0.user.email,
+            // flag:true
+        }
+    }
+    // addingBook(e){
+    //     axios.get(`${SERVER_URL}/user?email=${this.state.email}`).then(response => {
+    //         // console.log(response.data[0].booksAdded)
+    //         this.setState({
+    //             toReadBooks: response.data[0].booksAdded,
+    //             flag: false
+    //         })
+    //     }).catch(error => console.log(error))
+       
 
+    // }
+    // componentDidMount (){
+    //     axios.post(`${SERVER_URL}/book`).then(response => {
+    //         // console.log(response.data[0].booksAdded)
+    //         this.setState({
+    //             toReadBooks: response.data[0].booksAdded,
+    //             // flag: false
+    //         })
+    //     }).catch(error => console.log(error))
+    // }
     addingBook = (e) => {
         e.preventDefault();
-        const flag = true;
+       
         const bodyReq = {
-            email: this.props.withAuth0.user.email,
+            email: this.props.auth0.user.email,
             book: {
                 image: this.props.bookInfo.image,
                 author: this.props.bookInfo.author,
-                id: this.props.id
+                description: this.props.bookInfo.description
             }
         }
-        axios.get(`${process.env.REACT_APP_SERVER}/user?email=${this.props.withAuth0.user.email}`).then(res => {
-            console.log(this.props.withAuth0.user.email);
-            for (let i = 0; i < res.data.addedBooks.length; i++) {
-                if (res.data.addedBooks[i].id === this.props.id) {
-                    flag = false;
-                    break;
+        axios.get(`${process.env.REACT_APP_SERVER}/user?email=${this.props.auth0.user.email}`).then(res => {
+            console.log(this.props.auth0.user.email);
+            // let flag = true;
+            for (let i = 0; i < res.data[0].booksAdded.length; i++) {
+                if (res.data[0].booksAdded[i].id === this.props.id) {
+
+                    // flag = false;
+                    // break;
                 }
             }
-            if (flag) {
-                axios.post(`${process.env.REACT_APP_SERVER}/book`, bodyReq)
-            }
-        })
+            // if (flag) {
+                axios.post(`${process.env.REACT_APP_SERVER}/book`, bodyReq);
+                this.state.toReadBooks.push(res.data);
+                this.setState({
+                    toReadBooks:this.state.toReadBooks
+                });
+                
+               console.log(axios.post(`${process.env.REACT_APP_SERVER}/book`, bodyReq));
+            // }
+        });
     }
 
     bookModel = () => {
@@ -54,7 +89,7 @@ export class BookCard extends Component {
 
                                 </Card.Body>
                                 {
-                                    <button onSubmit={(e) => this.addingBook(e)} >Add to Bookshelf</button>
+                                    <button onClick={(e) => this.addingBook(e)} >Add to Bookshelf</button>
 
                                 }
                             </Card>

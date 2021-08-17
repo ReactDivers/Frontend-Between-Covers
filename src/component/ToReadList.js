@@ -9,7 +9,7 @@ export class ToReadList extends Component {
         return (
             <div style={{ margin: '20px 10% 20px 10%' }}>
                 <Row xs={1} md={3} className="g-4">
-                    {this.props.toReadBooks.map((item, index) => {
+                    {this.props.toReadBooks.map((item) => {
                         return (<Col>
                             <Card >
                                 <Card.Body >

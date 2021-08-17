@@ -185,7 +185,7 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel style={{ width:'800px',marginLeft:'14rem'}} >
+                <Carousel  >
 
                     <Carousel.Item>
                         <Carousel.Caption>
@@ -194,8 +194,8 @@ export class Main extends Component {
                         </Carousel.Caption>
 
                         <img class="img"
-                         height='700px'
-                         width='200px'
+                         height='500px'
+                         width='400px'
 
 
                             className="d-block w-100"
@@ -229,22 +229,22 @@ export class Main extends Component {
                         />
 
                         <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            {/* <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                             height='650px'
-                             width='400px'
+                             height='500px'
+                             width='300px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
                         />
 
                         <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            {/* <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
 
 
                         </Carousel.Caption>
@@ -289,7 +289,7 @@ export class Main extends Component {
 
                         {this.state.fiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img'/>
 
 
                         )}
@@ -303,7 +303,7 @@ export class Main extends Component {
 
                         {this.state.nonFiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
 
 
                         )}
@@ -317,7 +317,7 @@ export class Main extends Component {
 
                         {this.state.classic.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
 
 
                         )}
@@ -333,7 +333,7 @@ export class Main extends Component {
 
                         {this.state.kids.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
 
 
                         )}

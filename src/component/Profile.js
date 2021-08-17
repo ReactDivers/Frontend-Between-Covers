@@ -3,6 +3,7 @@ import { withAuth0  } from "@auth0/auth0-react";
 import Card from 'react-bootstrap/Card'
 import { Component } from "react";
 import axios from 'axios';
+import Content from './Content';
 
 import ToReadList from './ToReadList';
 
@@ -17,10 +18,9 @@ export class Profile extends Component {
             flag:true
         }
     }
-    getToReadList = async (e) => {
-        e.preventDefault();
-        await axios.get(`${SERVER_URL}/user?email=${this.state.email}`).then(response => {
-            console.log(response.data[0].booksAdded)
+     componentDidMount (){
+        axios.get(`${SERVER_URL}/user?email=${this.state.email}`).then(response => {
+            // console.log(response.data[0].booksAdded)
             this.setState({
                 toReadBooks: response.data[0].booksAdded,
                 flag: false
@@ -29,6 +29,7 @@ export class Profile extends Component {
     }
 
     render() {
+        // console.log(this.state);
         const { user, isAuthenticated } = this.props.auth0;
 
         return (
@@ -48,9 +49,10 @@ export class Profile extends Component {
                     <h2>
                         Your BOOKSHELF
                     </h2>
+                    {isAuthenticated && 
                     <ToReadList 
                     toReadBooks={this.state.toReadBooks}
-                    />
+                    />}
                 </div>
             )
         )
