@@ -313,7 +313,7 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h5> CLASSIC 🖋️ </h5>
+                    <h5> HISTORY 🖋️ </h5>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
