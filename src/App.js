@@ -5,9 +5,9 @@ import Footer from './component/Footer';
 import Profile from './component/Profile';
 import Login from './component/Login';
 import Main from './component/Main';
-import SelectedBook from './component/SelectedBook';
-import Card from './component/CARD/Card';
-import { Container, Row, Col } from 'react-bootstrap';
+// import SelectedBook from './component/SelectedBook';
+// import Card from './component/CARD/Card';
+// import { Container, Row, Col } from 'react-bootstrap';
 import AboutUs from './component/AboutUs';
 
 import './style/Profile.css';

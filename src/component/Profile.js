@@ -7,10 +7,14 @@ import Col from 'react-bootstrap/Col';
 
 import { Component } from "react";
 import axios from 'axios';
+import Content from './Content';
+import Button from 'react-bootstrap/Button';
 
 import ToReadList from './ToReadList';
 import '../style/Profile.css';
-// const userEmail = this.props.auth0.user.email;
+import Card from 'react-bootstrap/Card';
+
+
 
 const SERVER_URL = process.env.REACT_APP_SERVER;
 
@@ -19,16 +23,13 @@ export class Profile extends Component {
     super(props);
     this.state = {
       toReadBooks: [],
-      // email: this.props.auth0.user.email,
-      // flag: true,
-      // displayAddModal: false,
-      // displayUpdateModal: false,
+      email: this.props.auth0.user.email,
+      flag: true
     }
   }
-  getToReadList = async (e) => {
-    e.preventDefault();
-    await axios.get(`${SERVER_URL}/user?email=${this.state.email}`).then(response => {
-      console.log(response.data[0].booksAdded)
+  componentDidMount() {
+    axios.get(`${SERVER_URL}/user?email=${this.state.email}`).then(response => {
+      // console.log(response.data[0].booksAdded)
       this.setState({
         toReadBooks: response.data[0].booksAdded,
         flag: false
@@ -36,27 +37,29 @@ export class Profile extends Component {
     }).catch(error => console.log(error))
   }
 
-  // handelAddBookForm = (e) => {
+  deletingBook = (bookId) => {
+    console.log(this.state.toReadBooks);
 
-  //   e.preventDefault();
-  //   this.handelDisplayModal(); // hide the modal after form submission
+    axios.delete(`http://localhost:3001/book/${bookId}?email=${this.state.email}`).then(res => {
 
-  //   const body = {
-  //     email: this.props.auth0.user.email, // we are getting the email of the user from auth0
-  //     title: e.target.catName.value,
-  //     cat_breed: e.target.catBreed.value,
+      console.log(res.data);
+      if (res.data === 'success') {
+        // once the item is deleted on the backend
+        // create a temp var that will contain all of the cats except the cat the got deleted
+        // then update the state to re-render
 
-  //   };
-
-  //   axios.post(`${process.env.REACT_APP_SERVER}/review, body ? email =${userEmail}`).then(axiosResponse => {
-  //     this.state.toReadBooks.push(axiosResponse.data);
-  //     this.setState({
-  //       toReadBooks: this.state.toReadBooks
-  //     });
-  //   }).catch(error => alert(error));
-  // }
+        let tempBookObj = this.state.toReadBooks.filter(item => item._id !== bookId);
+        // this.state.toReadBooks=tempBookObj;
+        console.log(tempBookObj);
+        this.setState({
+          toReadBooks: tempBookObj
+        });
+      }
+    }).catch(error => alert(error))
+  }
 
   render() {
+    // console.log(this.state);
     const { user, isAuthenticated } = this.props.auth0;
 
     return (
@@ -108,13 +111,30 @@ export class Profile extends Component {
                 <h2>
                   YOUR BOOKSHELF
                 </h2>
-                <ToReadList
-                  toReadBooks={this.state.toReadBooks}
-                />
+
               </Col>
             </Row>
           </Container>
+          {isAuthenticated &&
+            <div style={{ margin: '20px 10% 20px 10%' }}>
+              <Row xs={1} md={3} className="g-4">
+                {this.state.toReadBooks.map((item) => {
+                  return (<Col>
+                    <Card >
+                      <Card.Body >
+                        <Card.Img variant="top" src={item.image} />
+                        <Card.Title style={{ fontSize: '30px' }}>{item.author}</Card.Title>
+                        <Button onClick={() => this.deletingBook(item._id)} variant="secondary">Remove</Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  )
+                })}
+              </Row>
+            </div>
+          }
         </div>
+
       )
     )
   }
