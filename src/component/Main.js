@@ -251,14 +251,14 @@ export class Main extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-                
+
                 <form id="form1" onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "black", backgroundColor: "#F8F9FA" }}  >
-                   
+
 
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book" />
                     {/* <br></br>
           <br></br> */}
-                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  "  />
+                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  " />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -284,7 +284,7 @@ export class Main extends Component {
 
                 {/* } */}
                 <div>
-                <br></br>
+                    <br></br>
                     <h5> FICTION 🐉 </h5>
                     <ImageScroller style={{ margin: '2rem' }}>
 
