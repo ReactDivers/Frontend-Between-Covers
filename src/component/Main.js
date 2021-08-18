@@ -299,7 +299,7 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> NON FICTION 🔖 </h>
+                    <h5> NON FICTION 🔖 </h5>
                     <ImageScroller style={{ margin: '5rem' }}>
 
                         {this.state.nonFiction.map(item =>
