@@ -48,7 +48,7 @@ export class AboutUs extends Component {
                                 <Card.Body>
                                     <Card.Img variant="top" src={Sara} alt="sara\'s pic" />
                                     <br />
-                                    <Card.Title >Sara Alhilo</Card.Title>
+                                    <Card.Title >Sarah Alhilo</Card.Title>
                                     <Card.Text>
                                         DEVELOPER
                                     </Card.Text>

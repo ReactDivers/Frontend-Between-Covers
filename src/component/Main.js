@@ -18,6 +18,7 @@ import Container from 'react-bootstrap/Container';
 import '../style/Main.css';
 require('dotenv').config();
 
+
 export class Main extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +29,7 @@ export class Main extends Component {
             title: "",
             description: '',
             image: '',
-            author:'',
+            author: '',
             booksData: [],
             showError: false,
             /////////////////////
@@ -57,12 +58,12 @@ export class Main extends Component {
 
     // this.addingData();
 
-    bookMOdel = (title, description, image,author) => {
+    bookMOdel = (title, description, image, author) => {
         this.setState({
             title: title,
             description: description,
             image: image,
-            author:author,
+            author: author,
             show: true,
 
         })
@@ -202,12 +203,12 @@ export class Main extends Component {
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
-                      
+
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                         height='600px'
-                         width='400px'
+                            height='600px'
+                            width='400px'
 
                             className="d-block w-100"
                             src="https://img5.goodfon.com/wallpaper/nbig/c/35/books-glasses-table-library.jpg"
@@ -221,8 +222,8 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                             height='650px'
-                             width='400px'
+                            height='650px'
+                            width='400px'
                             className="d-block w-100"
                             src="https://c1.wallpaperflare.com/preview/493/690/564/book-old-book-read-used.jpg"
                             alt="Third slide"
@@ -251,13 +252,13 @@ export class Main extends Component {
                     </Carousel.Item>
                 </Carousel>
                 
-                <form onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "white", backgroundColor: "#0D0000" }}  >
-                    <br></br>
+                <form id="form1" onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "black", backgroundColor: "#F8F9FA" }}  >
+                   
 
-                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book"/>
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; "  />
+                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  "  />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -265,7 +266,7 @@ export class Main extends Component {
                             return (
                                 <Col lg={4} xs="auto">
                                     <BookCard
-                                        
+
                                         model={this.bookMOdel}
                                         bookInfo={elem}
 
@@ -284,12 +285,12 @@ export class Main extends Component {
                 {/* } */}
                 <div>
                 <br></br>
-                    <h> FICTION 🐉 </h>
+                    <h5> FICTION 🐉 </h5>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.fiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img'/>
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -298,12 +299,12 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> NON FICTION 🔖 </h>
-                    <ImageScroller style={{ margin: '2rem' }}>
+                    <h5> NON FICTION 🔖 </h5>
+                    <ImageScroller style={{ margin: '5rem' }}>
 
                         {this.state.nonFiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -312,12 +313,12 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> CLASSIC 🖋️ </h>
+                    <h5> CLASSIC 🖋️ </h5>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -328,12 +329,12 @@ export class Main extends Component {
                 <div>
 
 
-                    <h> KIDS 🧒👧 </h>
+                    <h5> KIDS 🧒👧 </h5>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.kids.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} alt='img' />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
