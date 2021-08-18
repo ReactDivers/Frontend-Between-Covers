@@ -18,6 +18,7 @@ import Container from 'react-bootstrap/Container';
 import '../style/Main.css';
 require('dotenv').config();
 
+
 export class Main extends Component {
     constructor(props) {
         super(props);
@@ -185,7 +186,7 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel style={{ width: '800px', marginLeft: '14rem' }} >
+                <Carousel  >
 
                     <Carousel.Item>
                         <Carousel.Caption>
@@ -250,14 +251,14 @@ export class Main extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-
-                <form onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "white", backgroundColor: "#0D0000" }}  >
-                    <br></br>
+                
+                <form id="form1" onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "black", backgroundColor: "#F8F9FA" }}  >
+                   
 
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; " />
+                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  "  />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -283,9 +284,9 @@ export class Main extends Component {
 
                 {/* } */}
                 <div>
-                    <br></br>
-                    <h> FICTION 🐉 </h>
-                    <ImageScroller style={{ margin: '5rem' }}>
+                <br></br>
+                    <h5> FICTION 🐉 </h5>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.fiction.map(item =>
 
@@ -312,9 +313,8 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> HISTORY 🖋️ </h>
-                    <hr style={{ margin: '5rem' }} />
-                    <ImageScroller style={{ marginRight: '3rem', marginLeft: "3rem", marginButtom: '3rem' }}>
+                    <h5> CLASSIC 🖋️ </h5>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
 
@@ -329,9 +329,8 @@ export class Main extends Component {
                 <div>
 
 
-                    <h> KIDS 🧒👧 </h>
-                    <hr />
-                    <ImageScroller style={{ margin: '5rem' }}>
+                    <h5> KIDS 🧒👧 </h5>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.kids.map(item =>
 
