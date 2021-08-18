@@ -6,6 +6,7 @@ import Sara from './assets/Sara.jpg';
 import Nada from './assets/nada.jpeg';
 import Leen from './assets/Leen.jpg';
 import linkedin from './assets/linkedin.png';
+import { FaGithub, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 
 
@@ -21,11 +22,11 @@ export class AboutUs extends Component {
                     <Row>
                         <Col lg={6} xs="auto">
                             <Card className="Card-container" style={{ width: '18rem', height: '450px', marginBlock: '5rem', marginLeft: '10rem' }}>
-                                <Card.Body>
+                                <Card.Body style={{ backgroundColor: '#b6b2c5' }}>
                                     <Card.Img variant="top" src={Rawan} alt="rawan\'s pic" />
                                     <br />
-                                    <Card.Title >Rawan Alazazi</Card.Title>
-                                    <Card.Text>
+                                    <Card.Title style={{ color: 'white', marginTop:'1rem' }} >Rawan Alazazi</Card.Title>
+                                    <Card.Text style={{ color: 'white' }}>
                                         LEADER & DEVELOPER
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
@@ -45,11 +46,11 @@ export class AboutUs extends Component {
                         </Col>
                         <Col lg={6} xs="auto">
                             <Card className="Card-container" style={{ width: '18rem', height: '450px', marginBlock: '5rem', marginLeft: '4rem' }}>
-                                <Card.Body>
+                                <Card.Body style={{ backgroundColor: '#b6b2c5' }}>
                                     <Card.Img variant="top" src={Sara} alt="sara\'s pic" />
                                     <br />
-                                    <Card.Title >Sarah Alhilo</Card.Title>
-                                    <Card.Text>
+                                    <Card.Title style={{ color: 'white', marginTop:'1rem' }} >Sarah Alhilo</Card.Title>
+                                    <Card.Text style={{ color: 'white' }}>
                                         DEVELOPER
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
@@ -72,11 +73,11 @@ export class AboutUs extends Component {
                         </Col>
                         <Col lg={6} xs="auto">
                             <Card className="Card-container" style={{ width: '18rem', height: '450px', marginRight: '5rem', marginLeft: '10rem', marginButtom: '4rem' }}>
-                                <Card.Body>
+                                <Card.Body style={{ backgroundColor: '#b6b2c5' }}>
                                     <Card.Img height='250px' width='150px' variant="top" src={Nada} alt="nada\'s pic" />
                                     <br />
-                                    <Card.Title  >Nada Al-abdullah</Card.Title>
-                                    <Card.Text>
+                                    <Card.Title style={{ color: 'white', marginTop:'1rem' }} >Nada Al-abdullah</Card.Title>
+                                    <Card.Text style={{ color: 'white' }} >
                                         DEVELOPER
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
@@ -96,11 +97,11 @@ export class AboutUs extends Component {
                         </Col>
                         <Col lg={6} xs="auto">
                             <Card className="Card-container" style={{ width: '18rem', height: '450px', marginRight: '5rem', marginLeft: '4rem', marginButtom: '4rem' }}>
-                                <Card.Body >
+                                <Card.Body style={{ backgroundColor: '#b6b2c5' }} >
                                     <Card.Img variant="top" src={Leen} />
                                     <br />
-                                    <Card.Title >Leen Duafi</Card.Title>
-                                    <Card.Text>
+                                    <Card.Title style={{ color: 'white', marginTop:'1rem' }} >Leen Duafi</Card.Title>
+                                    <Card.Text style={{ color: 'white' }}>
                                         DEVELOPER
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>

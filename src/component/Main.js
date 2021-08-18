@@ -190,13 +190,13 @@ export class Main extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            {/* <h3>First slide label</h3> */}
-                            <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
+                            {/* <h3>First slide label</h3>
+                            <p style={{marginBottom:"45%",fontFamily:"'Raleway', sans-serif"}}>Between The Pages Of A Book Is A Lovely Place To BE</p> */}
                         </Carousel.Caption>
 
                         <img class="img"
-                         height='500px'
-                         width='400px'
+                            height='500px'
+                            width='400px'
 
 
                             className="d-block w-100"
@@ -236,8 +236,8 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
-                             height='500px'
-                             width='300px'
+                            height='500px'
+                            width='300px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
@@ -251,14 +251,14 @@ export class Main extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-                
+
                 <form id="form1" onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "black", backgroundColor: "#F8F9FA" }}  >
-                   
+
 
                     <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book" />
                     {/* <br></br>
           <br></br> */}
-                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  "  />
+                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  " />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -284,9 +284,9 @@ export class Main extends Component {
 
                 {/* } */}
                 <div>
-                <br></br>
-                    <h5> FICTION 🐉 </h5>
-                    <ImageScroller style={{ margin: '2rem' }}>
+                    <br></br>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> FICTION 🐉 </h3>
+                    <ImageScroller style={{ margin: '2rem',marginTop:'0' }}>
 
                         {this.state.fiction.map(item =>
 
@@ -299,8 +299,10 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h5> NON FICTION 🔖 </h5>
-                    <ImageScroller style={{ margin: '5rem' }}>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}>
+                        {/* <hr style={{margin:'2rem'}}/> */}
+                         NON FICTION 🔖 </h3>
+                    <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.nonFiction.map(item =>
 
@@ -313,7 +315,9 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h5> HISTORY 🖋️ </h5>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> 
+                    <hr style={{margin:'2rem'}}/> 
+                    HISTORY 🖋️ </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
@@ -329,7 +333,7 @@ export class Main extends Component {
                 <div>
 
 
-                    <h5> KIDS 🧒👧 </h5>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> <hr style={{margin:'2rem'}}/> KIDS 🧒👧 </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.kids.map(item =>
