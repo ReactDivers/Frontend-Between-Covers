@@ -15,10 +15,12 @@ import '../style/Header.css';
 const mystyle = {
     // color: "white",
     // backgroundColor: "DodgerBlue",
-    paddingLeft: "43rem",
+    paddingLeft: "42rem",
     paddingRight: "20px",
     fontFamily: "Arial",
-  
+    fontSize:"17px",
+    
+      
 };
 const navStyle={
 
@@ -26,7 +28,8 @@ const navStyle={
 }
 const imgstyle = {
 
-    paddingRight: "20px"
+    paddingRight: "20px",
+    fontSize:"17px",
 };
 
 const titleStyle = {
@@ -42,7 +45,7 @@ class Header extends Component {
                 <Navbar  style={{overflow: "hidden", position:"sticky"}} collapseOnSelect expand="lg" bg="light" variant="light">
                     <img  src={logo} alt="logo"className="App-logo" ></img>
                     <Navbar.Brand  style={titleStyle} >
-                    <img  src={title} alt="img" height="50vmin" ></img>
+                    <img style={{position:"sticky",marginLeft:"-2.4rem"}} src={title} alt="img" height="50vmin" ></img>
                         </Navbar.Brand>
                     <Link to="/" style={mystyle}>Home</Link>
                     {this.props.auth0.isAuthenticated&& <Link to="/profile" style={imgstyle}>Profile</Link>}

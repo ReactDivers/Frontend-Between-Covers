@@ -43,7 +43,7 @@ export class Profile extends Component {
     axios.delete(`http://localhost:3001/book/${bookId}?email=${this.state.email}`).then(res => {
 
       console.log(res.data);
-      if (res.data === 'success') {
+      if (res.data.nModified !== 0) {
         // once the item is deleted on the backend
         // create a temp var that will contain all of the cats except the cat the got deleted
         // then update the state to re-render
@@ -93,8 +93,8 @@ export class Profile extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={6} md={6}> <h6>  {user.name}</h6></Col>
-              <Col xs={6} md={6}><h6>{user.email}</h6></Col>
+              <Col xs={6} md={6}> <h6 style={{color:"rgb(81, 77, 110)"}}>  {user.name}</h6></Col>
+              <Col xs={6} md={6}><h6 style={{color:"rgb(81, 77, 110)"}}>{user.email}</h6></Col>
             </Row>
             <Row>
               <Col md={12}>
@@ -105,10 +105,9 @@ export class Profile extends Component {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
             <Row>
               <Col md={12}>
-                <h2>
+                <h2 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold',marginBottom:'2%'}}>
                   YOUR BOOKSHELF
                 </h2>
 
@@ -116,15 +115,15 @@ export class Profile extends Component {
             </Row>
           </Container>
           {isAuthenticated &&
-            <div style={{ margin: '20px 10% 20px 10%' }}>
-              <Row xs={1} md={3} className="g-4">
+            <div style={{ margin: '20px 20px 20px 10%' }}>
+              <Row xs={1} md={4} className="g-4">
                 {this.state.toReadBooks.map((item) => {
                   return (<Col>
-                    <Card >
-                      <Card.Body >
-                        <Card.Img variant="top" src={item.image} />
-                        <Card.Title style={{ fontSize: '30px' }}>{item.author}</Card.Title>
-                        <Button onClick={() => this.deletingBook(item._id)} variant="secondary">Remove</Button>
+                    <Card style={{ width: '13rem',height:'21rem' }} >
+                      <Card.Body style={{backgroundColor:'#d8d7df'}}>
+                        <Card.Img style={{ width: '10rem',height:'14rem',marginBottom:'1rem' }} variant="top" src={item.image} />
+                        <Card.Title style={{ fontSize: '14px',textAlign:"center" }}>{item.author}</Card.Title>
+                        <Button style={{marginLeft:"24%",backgroundColor:"#dc3545", borderBlockStyle:"none"}} onClick={() => this.deletingBook(item._id)} variant="secondary">Remove</Button>
                       </Card.Body>
                     </Card>
                   </Col>
