@@ -91,13 +91,13 @@ border-radius: 3px;
 }
 
 .btn button:hover{
-background: red;
+background:#FDD2BF;
 transform: scale(1.1);
 }
 
 a{
 text-transform: uppercase;
-color: royalblue;
+color: #dc3545;
 text-decoration: none;
 font-weight: bold;
 }

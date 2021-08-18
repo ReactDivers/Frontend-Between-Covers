@@ -5,7 +5,7 @@
   text-align: center;
   font-size: 15px;
   line-height: 40px;
-  background-color:#11100eb6 ;
+  background-color:#dc3545; ;
   color: white;
   position: relative;
   bottom: 0;
@@ -34,11 +34,11 @@ cursor: pointer;
 
 .ingredientFooter{
   height: 100px;
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(231, 126, 133);
   background-image:
     linear-gradient(
       to bottom,
-      #94928db6,
-      #333230b6 100%
+      rgb(221, 152, 157),
+      #dc3545 100%
     );
 }

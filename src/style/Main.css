@@ -11,11 +11,11 @@
     /* vertical-align: top; */
     color: transparent;
     border: 0;
-    cursor: default;
-    background-color: rgb(0, 183, 255);
+    background-color:#dc3545;
     border-radius: 4px;
-    width:40px;
-    
+    width:55px;
+    height: 37px;
+    cursor: pointer;
     /* width: 100%; */
 
   }
@@ -35,16 +35,19 @@
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin-right: 10px;
-    font: 400 13.3333px Arial;
+    font: 450 16.3333px Arial;
     padding: 1px 2px;
     border-width: 3px;
     border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-color:#dc3545;
     border-image: initial;
-    width: 18%;
-    height: 25px;
+    width: 22%;
+    height: 35px;
 }
 .search{
     
     margin-left:35%;
+}
+#form{
+    background-color: #F8F9FA;
 }
