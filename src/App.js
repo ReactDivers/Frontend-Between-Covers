@@ -10,7 +10,7 @@ import Card from './component/CARD/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import AboutUs from './component/AboutUs';
 
-
+import './style/Profile.css';
 
 
 import {
@@ -26,9 +26,9 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Router>
-          <Header />
+          <Header  className="App-header"/>
           <Switch>
             <Route exact path="/">
               <Main

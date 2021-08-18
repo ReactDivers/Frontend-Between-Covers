@@ -1,10 +1,15 @@
 import React from "react";
 import { withAuth0  } from "@auth0/auth0-react";
-import Card from 'react-bootstrap/Card'
+import Image from 'react-bootstrap/Image';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import { Component } from "react";
 import axios from 'axios';
 
 import ToReadList from './ToReadList';
+import '../style/Profile.css';
 
 const SERVER_URL=process.env.REACT_APP_SERVER;
 
@@ -33,25 +38,60 @@ export class Profile extends Component {
 
         return (
             isAuthenticated && (
-                <div>
-                    <Card style={{ width: '18rem', height: '500px' }}>
-                        <Card.Body>
-                            <Card.Img variant="top" src={user.picture} alt={user.name} />
-                            <br />
-                            <Card.Title>{user.name}</Card.Title>
-                            <Card.Text>
-                                {user.email}
-                            </Card.Text>
+                // <div>
+                //     <Card style={{ width: '18rem', height: '500px' }}>
+                //         <Card.Body>
+                //             <Card.Img variant="top" src={user.picture} alt={user.name} />
+                //             <br />
+                //             <Card.Title>{user.name}</Card.Title>
+                //             <Card.Text>
+                //                 {user.email}
+                //             </Card.Text>
     
-                        </Card.Body>
-                    </Card>
-                    <h2>
-                        Your BOOKSHELF
+                //         </Card.Body>
+                //     </Card>
+                //     <h2>
+                //         Your BOOKSHELF
+                //     </h2>
+                //     <ToReadList 
+                //     toReadBooks={this.state.toReadBooks}
+                //     />
+                // </div>
+
+<div className="App justify-content-center">
+<br />
+<Container >
+  <Row >
+    <Col xs={12} md={12}>
+      <Image src={user.picture} alt={user.name} roundedCircle />
+    </Col>
+  </Row>
+  <Row>
+    <Col xs={6} md={6}> <h6>  {user.name}</h6></Col>
+    <Col xs={6} md={6}><h6>{user.email}</h6></Col>
+  </Row>
+  <Row>
+    <Col md={12}>
+      {/* <Content /> */}
+    </Col>
+  </Row>
+
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <Row>
+    <Col md={12}>
+    <h2>
+                       YOUR BOOKSHELF
                     </h2>
-                    <ToReadList 
-                    toReadBooks={this.state.toReadBooks}
-                    />
-                </div>
+                   <ToReadList 
+                   toReadBooks={this.state.toReadBooks}
+                     />
+    </Col>
+  </Row>
+</Container>
+</div>
             )
         )
     }
@@ -59,34 +99,3 @@ export class Profile extends Component {
 
 export default withAuth0(Profile);
 
-
-// const Profile = () => {
-//     const { user, isAuthenticated, isLoading } = useAuth0();
-
-//     if (isLoading) {
-//         return <div>Loading ...</div>;
-//     }
-
-//     return (
-//         isAuthenticated && (
-//             <div>
-//                 <Card style={{ width: '18rem', height: '500px' }}>
-//                     <Card.Body>
-//                         <Card.Img variant="top" src={user.picture} alt={user.name} />
-//                         <br />
-//                         <Card.Title>{user.name}</Card.Title>
-//                         <Card.Text>
-//                             {user.email}
-//                         </Card.Text>
-
-//                     </Card.Body>
-//                 </Card>
-//                 <h2>
-//                     Your BOOKSHELF
-//                 </h2>
-//             </div>
-//         )
-//     );
-// };
-
-// export default Profile;
