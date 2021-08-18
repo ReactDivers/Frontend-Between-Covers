@@ -9,18 +9,18 @@ import './Footer.css'
 // import LogoutButton from './LogoutButton';
 // import { withAuth0 } from '@auth0/auth0-react';
 
-const mystyle = {
-    // color: "white",
-    // backgroundColor: "DodgerBlue",
-    paddingLeft: "47rem",
-    paddingRight: "20px",
-    fontFamily: "Arial",
+// const mystyle = {
+//     // color: "white",
+//     // backgroundColor: "DodgerBlue",
+//     paddingLeft: "47rem",
+//     paddingRight: "20px",
+//     fontFamily: "Arial",
 
-};
-const imgstyle = {
+// };
+// const imgstyle = {
 
-    paddingRight: "20px"
-};
+//     paddingRight: "20px"
+// };
 
 class Footer extends Component {
     render() {
