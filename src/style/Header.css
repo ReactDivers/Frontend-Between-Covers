@@ -1,5 +1,7 @@
+
+
 a{
-    color:wheat;
+  color:#dc3545;
     
   }
   
@@ -15,3 +17,14 @@ a{
     width: 150px;
     height: 150px;
   }
+  .ingredientHeader{
+    
+    background-color: rgb(156, 156, 156);
+    background-image:
+      linear-gradient(
+        to bottom,
+        #94928db6,
+        #333230b6 100%
+      );
+  }
+  

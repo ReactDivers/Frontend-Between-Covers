@@ -1,0 +1,48 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.main-footer{
+  text-align: center;
+  font-size: 15px;
+  line-height: 40px;
+  background-color:#141525 ;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  font-weight: lighter;
+  font-family:'Rubik', sans-serif;
+  
+}
+
+.container2{
+ margin-left: 19%;
+}
+
+.container2 .col{
+  text-align: left;
+}
+.row-term{
+  text-align: center;
+}
+
+.list-unstyled li:hover{
+color: rgb(161, 156, 156);
+cursor: pointer;
+}
+
+.ingredientFooter{
+  height: 100px;
+  background-color: #9399b4;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgb(64, 65, 87),
+      #171229 100%
+    );
+
+    color: #7556e4;
+
+
+}

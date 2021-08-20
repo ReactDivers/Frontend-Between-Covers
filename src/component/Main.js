@@ -15,7 +15,9 @@ import ImageScroller from 'react-image-scroller';
 import React, { Component } from 'react'
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
+import '../style/Main.css';
 require('dotenv').config();
+
 
 export class Main extends Component {
     constructor(props) {
@@ -27,7 +29,7 @@ export class Main extends Component {
             title: "",
             description: '',
             image: '',
-            author:'',
+            author: '',
             booksData: [],
             showError: false,
             /////////////////////
@@ -56,12 +58,12 @@ export class Main extends Component {
 
     // this.addingData();
 
-    bookMOdel = (title, description, image,author) => {
+    bookMOdel = (title, description, image, author) => {
         this.setState({
             title: title,
             description: description,
             image: image,
-            author:author,
+            author: author,
             show: true,
 
         })
@@ -72,7 +74,7 @@ export class Main extends Component {
 
         const server = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server}`)
+        // console.log(` server component did mount : ${server}`)
 
 
         axios.get(`${server}/book1`)
@@ -82,11 +84,11 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.fiction);
+        // console.log(this.state.fiction);
         /////////////////////NONFICTION/////////////////////////////////////
         const server2 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server2}`)
+        // console.log(` server component did mount : ${server2}`)
 
 
         axios.get(`${server2}/book2`)
@@ -96,11 +98,11 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.nonFiction);
+        // console.log(this.state.nonFiction);
         /////////////////////KIDS////////////////////////////
         const server3 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server3}`)
+        // console.log(` server component did mount : ${server3}`)
 
 
         axios.get(`${server3}/book3`)
@@ -110,12 +112,12 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.kids);
+        // console.log(this.state.kids);
 
         //////////////////////CLASSIC///////////////////////
         const server4 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server4}`)
+        // console.log(` server component did mount : ${server4}`)
 
 
         axios.get(`${server4}/book4`)
@@ -125,12 +127,12 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.classic);
+        // console.log(this.state.classic);
 
         ////////////////////////QUOTE////////////////////////////////
         const server5 = 'http://localhost:3001'
 
-        console.log(` server component did mount : ${server5}`)
+        // console.log(` server component did mount : ${server5}`)
 
 
         axios.get(`${server5}/quote`)
@@ -140,7 +142,7 @@ export class Main extends Component {
                 })
             })
 
-        console.log(this.state.quote);
+        // console.log(this.state.quote);
 
     }
 
@@ -184,27 +186,32 @@ export class Main extends Component {
     render() {
         return (
             <div>
-                <Carousel>
+                <Carousel  >
 
                     <Carousel.Item>
+                        <Carousel.Caption>
+                            {/* <h3>First slide label</h3>
+                            <p style={{marginBottom:"45%",fontFamily:"'Raleway', sans-serif"}}>Between The Pages Of A Book Is A Lovely Place To BE</p> */}
+                        </Carousel.Caption>
 
                         <img class="img"
+                            height='500px'
+                            width='400px'
+
+
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Best-books-blog-700x467.jpg"
                             alt="First slide"
                         />
-                        {/* <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/>
-                        <img src='https://books.google.com/books/content?id=RsryvkEA81QC&printsec=frontcover&img=1&zoom=1&source=gbs_api'/> */}
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Between The Pages Of A Book Is A Lovely Place To BE</p>
-                        </Carousel.Caption>
+
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                            height='600px'
+                            width='400px'
+
                             className="d-block w-100"
-                            src="https://statsandr.com/blog/2020-04-26-a-package-to-download-free-springer-books-during-covid-19-quarantine_files/A%20package%20to%20download%20free%20Springer%20books%20during%20Covid-19%20quarantine.jpeg"
+                            src="https://img5.goodfon.com/wallpaper/nbig/c/35/books-glasses-table-library.jpg"
                             alt="Second slide"
                         />
 
@@ -215,39 +222,43 @@ export class Main extends Component {
                     </Carousel.Item>
                     <Carousel.Item>
                         <img class="img"
+                            height='650px'
+                            width='400px'
+                            className="d-block w-100"
+                            src="https://c1.wallpaperflare.com/preview/493/690/564/book-old-book-read-used.jpg"
+                            alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                            {/* <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img class="img"
+                            height='500px'
+                            width='300px'
                             className="d-block w-100"
                             src="http://babblingbooks.com.au/wp-content/uploads/2018/12/Blog-2018-Wrap-up-700x467.jpg"
                             alt="Third slide"
                         />
 
                         <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img class="img"
-                            className="d-block w-100"
-                            src="https://cdn.theatlantic.com/media/mt/food/assets_c/2011/05/kindle-charles-dickens-1-thumb-600x300-51010.jpg"
-                            alt="Third slide"
-                        />
-
-                        <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            {/* <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
 
 
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-                <form onSubmit={this.submittingForm} style={{ marginTop: "10px", color: "white", backgroundColor: "#0D0000" }}  >
-                    <br></br>
-                    <label>BOOK NAME </label>
 
-                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" />
+                <form id="form1" onSubmit={this.submittingForm} style={{ marginTop: "0px", color: "black", backgroundColor: "#F8F9FA" }}  >
+
+
+                    <input style={{ marginTop: "10px", color: "black" }} name="bookName" type="text" placeholder="Search for a book" />
                     {/* <br></br>
           <br></br> */}
-                    <input style={{ margin: "10px", color: "#0D0000" }} type="submit" value=" &#x1F50E;&#xFE0E; " />
+                    <input id="button" style={{ margin: "10px", color: "#0D0000" }} type="submit" value="  " />
                 </form>
                 <Container>
                     <Row xs={1}>
@@ -255,7 +266,7 @@ export class Main extends Component {
                             return (
                                 <Col lg={4} xs="auto">
                                     <BookCard
-                                        
+
                                         model={this.bookMOdel}
                                         bookInfo={elem}
 
@@ -270,14 +281,16 @@ export class Main extends Component {
                 </Container>
 
 
+
                 {/* } */}
                 <div>
-                    <h> FICTION 🐉 </h>
-                    <ImageScroller style={{ margin: '2rem' }}>
+                    <br></br>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> FICTION 🐉 </h3>
+                    <ImageScroller style={{ margin: '2rem',marginTop:'0' }}>
 
                         {this.state.fiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -286,12 +299,14 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> NON FICTION 🔖 </h>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}>
+                        {/* <hr style={{margin:'2rem'}}/> */}
+                         NON FICTION 🔖 </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.nonFiction.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -300,12 +315,14 @@ export class Main extends Component {
                 </div>
 
                 <div>
-                    <h> CLASSIC 🖋️ </h>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> 
+                    <hr style={{margin:'2rem'}}/> 
+                    HISTORY 🖋️ </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.classic.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}
@@ -316,12 +333,12 @@ export class Main extends Component {
                 <div>
 
 
-                    <h> KIDS 🧒👧 </h>
+                    <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}> <hr style={{margin:'2rem'}}/> KIDS 🧒👧 </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.kids.map(item =>
 
-                            <img style={{ marginRight: '2rem' }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
 
 
                         )}

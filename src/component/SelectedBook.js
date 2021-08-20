@@ -12,27 +12,27 @@ class SelectedBook extends React.Component {
         console.log('Click!!!!');
         this.props.show();
 
-        this.props.select(this.props.title, this.props.description, this.props.image,this.props.author);
+        this.props.select(this.props.title, this.props.description, this.props.image, this.props.author);
     }
     render() {
         console.log(this.props.description);
         return (
             <div>
-                <Modal show={this.props.showState} onHide={this.props.showState}>
-                    <Card style={{ width: '31rem' }}>
-                        <Card.Img variant="top" src={this.props.image} onClick={this.imageClick} onClick={this.props.show} />
-                        <Card.Body>
-                            <Card.Title>{this.props.title}</Card.Title>
+                 <Modal  show={this.props.showState} onHide={this.props.showState}>
+                    <Card style={{ width: '20rem',textAlign:'center',marginLeft:'6rem',backgroundColor:'#d8d7df' }}>
+                        <Card.Img style={{ width: '10rem',height:'14rem',marginLeft:'22%' }} variant="top" src={this.props.image} onClick={this.imageClick} onClick={this.props.show} />
+                        <Card.Body >
+                            {/* <Card.Title>{this.props.title}</Card.Title> */}
                             <Card.Text>
-                                {this.props.description}
+                            <h3> Author : </h3>   {this.props.author}
                             </Card.Text>
                             <Card.Text>
-                                {this.props.author}
+                            <h3>Description:</h3>  <p style={{fontSize:'12px'}}>{this.props.description}</p>
                             </Card.Text>
                         </Card.Body>
                     </Card>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.props.close}>
+                        <Button style={{backgroundColor:'#dc3545'}} variant="secondary" onClick={this.props.close}>
                             Close
                         </Button>
                     </Modal.Footer>
