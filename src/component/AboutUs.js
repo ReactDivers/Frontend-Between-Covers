@@ -6,7 +6,6 @@ import Sara from './assets/Sara.jpg';
 import Nada from './assets/nada.jpeg';
 import Leen from './assets/Leen.jpg';
 import linkedin from './assets/linkedin.png';
-import { FaGithub, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 
 
@@ -55,7 +54,7 @@ export class AboutUs extends Component {
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
                                         <img src={linkedin} height='40px' width='40px' marginBlock='10rem' alt='img' />
-                                        <a href='#'> LinkedIn</a>
+                                        <a href='https://github.com/sarah-hillo'> LinkedIn</a>
 
 
                                     </button>
@@ -82,7 +81,7 @@ export class AboutUs extends Component {
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
                                         <img src={linkedin} height='40px' width='40px' marginBlock='10rem' alt='img' />
-                                        <a href='#'> LinkedIn</a>
+                                        <a href='https://github.com/Nada0795'> LinkedIn</a>
 
 
                                     </button>
@@ -105,8 +104,8 @@ export class AboutUs extends Component {
                                         DEVELOPER
                                     </Card.Text>
                                     <button class='btn button' style={{ textAlign: 'center' }}>
-                                        <img src={linkedin} height='40px' width='40px' marginBlock='10rem' />
-                                        <a href='#'> LinkedIn</a>
+                                        <img src={linkedin} height='40px' width='40px' marginBlock='10rem' alt='img' />
+                                        <a href='https://github.com/leen-duafi'> LinkedIn</a>
 
 
                                     </button>

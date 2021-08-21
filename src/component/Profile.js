@@ -7,10 +7,8 @@ import Col from 'react-bootstrap/Col';
 
 import { Component } from "react";
 import axios from 'axios';
-import Content from './Content';
 import Button from 'react-bootstrap/Button';
 
-import ToReadList from './ToReadList';
 import '../style/Profile.css';
 import Card from 'react-bootstrap/Card';
 

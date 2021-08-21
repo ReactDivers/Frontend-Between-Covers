@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
-import Alert from 'react-bootstrap/Alert';
 
 // import {bookData} from './Main';
 import axios from "axios";
-const SERVER_URL = process.env.REACT_APP_SERVER;
+// const SERVER_URL = process.env.REACT_APP_SERVER;
 export class BookCard extends Component {
     constructor(props) {
         super(props);
