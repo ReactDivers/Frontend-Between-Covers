@@ -290,7 +290,7 @@ export class Main extends Component {
 
                         {this.state.fiction.map(item =>
 
-                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} alt="" />
 
 
                         )}
@@ -300,13 +300,13 @@ export class Main extends Component {
 
                 <div>
                     <h3 style={{color:"rgb(81, 77, 110)",fontSize:"18px",fontWeight:'bold', textAlign:'center',marginTop:'2%'}}>
-                        {/* <hr style={{margin:'2rem'}}/> */}
+                        <hr style={{margin:'2rem'}}/>
                          NON FICTION 🔖 </h3>
                     <ImageScroller style={{ margin: '2rem' }}>
 
                         {this.state.nonFiction.map(item =>
 
-                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} alt="" />
 
 
                         )}
@@ -322,7 +322,7 @@ export class Main extends Component {
 
                         {this.state.classic.map(item =>
 
-                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} alt="" />
 
 
                         )}
@@ -338,7 +338,7 @@ export class Main extends Component {
 
                         {this.state.kids.map(item =>
 
-                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} />
+                            <img style={{ marginRight: '2rem', width: "200px" }} src={item.image} alt="" />
 
 
                         )}

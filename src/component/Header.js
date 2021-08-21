@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
@@ -22,10 +22,10 @@ const mystyle = {
     
       
 };
-const navStyle={
+// const navStyle={
 
-    position:"fixed"
-}
+//     position:"fixed"
+// }
 const imgstyle = {
 
     paddingRight: "20px",

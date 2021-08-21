@@ -20,7 +20,7 @@ class SelectedBook extends React.Component {
             <div>
                  <Modal  show={this.props.showState} onHide={this.props.showState}>
                     <Card style={{ width: '20rem',textAlign:'center',marginLeft:'6rem',backgroundColor:'#d8d7df' }}>
-                        <Card.Img style={{ width: '10rem',height:'14rem',marginLeft:'22%' }} variant="top" src={this.props.image} onClick={this.imageClick} onClick={this.props.show} />
+                        <Card.Img style={{ width: '10rem',height:'14rem',marginLeft:'22%' }} variant="top" src={this.props.image} onClick={this.imageClick}  />
                         <Card.Body >
                             {/* <Card.Title>{this.props.title}</Card.Title> */}
                             <Card.Text>
